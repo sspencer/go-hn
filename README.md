@@ -1,6 +1,6 @@
 # go-hn
 
-`hn` is a hacker news client for the terminal
+`hn` is a hacker news client for the terminal.  There's not much to this program code-wise, but this was a another happy surprise from GO as the XML parsing worked the first time.  
 
 ## Features
 
@@ -18,3 +18,26 @@
 
 * Install the `hn` binary into your $GOPATH with `go get github.com/sspencer/go-hn`
 * Invoked `hn` (assuming go/bin is in your path)
+
+## Parsing XML
+
+GO makes it SO easy!  Just define a few types and away you GO.
+
+    type Item struct {
+        Title string `xml:"title"`
+        Link  string `xml:"link"`
+    }
+
+    type Channel struct {
+        Items []Item `xml:"item"`
+    }
+
+    type Result struct {
+        Channel Channel `xml:"channel"`
+    }
+
+    body, err := ioutil.ReadAll(resp.Body)
+    ...
+    var v Result
+    err = xml.Unmarshal(body, &v)
+
