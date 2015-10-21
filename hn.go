@@ -75,7 +75,6 @@ func main() {
 
 	for {
 		if refresh {
-			fmt.Println()
 			items = fetchRSS("https://news.ycombinator.com/rss")
 			displayRSS(items)
 			refresh = false
