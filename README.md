@@ -7,6 +7,8 @@
 * Grabs latest hacker news headlines from the Hacker News [RSS Feed](https://news.ycombinator.com/rss) and displays them in the terminal
 * Opens desired article in default browser
 
+![Hacker News Terminal](screenshot.png?raw=true "Hacker News Terminal Screenshot")
+
 ## Dependencies
 
 * Working Go environment
