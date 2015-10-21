@@ -7,11 +7,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"os/exec"
 	"strconv"
 	"strings"
 
 	"github.com/fatih/color"
+	"github.com/skratchdot/open-golang/open"
 )
 
 type Item struct {
@@ -30,8 +30,9 @@ type Result struct {
 func fetchRSS(url string) []Item {
 	resp, err := http.Get(url)
 	if err != nil {
-		// handle error
+		log.Fatalf("error: %v", err)
 	}
+
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -100,13 +101,7 @@ func main() {
 		}
 
 		i = bound(i, 1, len(items))
-
-		// https://github.com/skratchdot/open-golang
-		cmd := exec.Command("open", items[i-1].Link)
-		err = cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
+		open.Run(items[i-1].Link) // open in default browser
 
 		fmt.Println()
 		displayRSS(items)
