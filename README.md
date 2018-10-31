@@ -13,7 +13,7 @@ Quick install: `go get github.com/sspencer/go-hn`
 
 ## Dependencies
 
-* Working Go environment
+* Working Go 1.11 environment
 * utf-8 terminal with colors
 
 ## Setup
