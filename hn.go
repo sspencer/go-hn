@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"html"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -54,7 +55,7 @@ func displayRSS(items []Item) {
 		color.Set(color.FgRed)
 		fmt.Printf("%2d.", index)
 		color.Unset()
-		fmt.Printf(" %s\n", item.Title)
+		fmt.Printf(" %s\n", html.UnescapeString(item.Title))
 	}
 }
 
